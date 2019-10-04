@@ -1,0 +1,448 @@
+section.customTable {
+  position: relative;
+  color: black;
+  background-color: white;
+  height: calc(100% - 20px);
+  overflow: hidden;
+}
+section.customTable > div {
+  overflow-y: scroll;
+  position: absolute;
+}
+section.customTable .customTable_link {
+  color: #aa66ff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+section.customTable .customTable_pointer {
+  cursor: pointer;
+}
+section.customTable .customTable_pointer * {
+  cursor: pointer;
+}
+section.customTable #customTable {
+  top: 0;
+  bottom: 30px;
+  width: 100%;
+  border-bottom: 5px solid #f2f2f2;
+}
+section.customTable .customTable_pagination,
+section.customTable .customTable_nbResults {
+  bottom: 0;
+  left: 0;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+section.customTable .customTable_nbResults {
+  margin-left: 10px;
+}
+section.customTable .customTable_pagination {
+  right: 0;
+  left: 100px;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+section.customTable .customTable_pagination div {
+  margin-right: 50px;
+}
+section.customTable .customTable_pagination div.customTable_arrow {
+  cursor: pointer;
+}
+section.customTable .customTable_pagination div.customTable_disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+section.customTable .customTable_pagination div:last-child {
+  margin-right: 20px;
+}
+section.customTable table {
+  border-spacing: 0;
+  border-collapse: unset;
+}
+section.customTable td {
+  border-bottom: 1px solid #eeeeee;
+  background: white;
+  color: #000;
+  padding: 0;
+  vertical-align: middle;
+}
+section.customTable th {
+  position: sticky;
+  top: 0;
+  padding: 0;
+  border: 0;
+  z-index: 100;
+}
+section.customTable th > div {
+  user-select: none;
+  background: white;
+  color: black;
+  padding: 5px 10px;
+  height: 30px;
+  top: 0;
+  font-weight: 100;
+  font-size: 0.9rem;
+  line-height: 20px;
+  border-left: 1px solid #eeeeee;
+  border-bottom: 1px solid lightgrey;
+  display: flex;
+  justify-content: space-between;
+}
+section.customTable th:first-child div {
+  border: none;
+  border-bottom: 1px solid lightgrey;
+}
+section.customTable tr.customTable_rowSelected td {
+  background: #ffeeff;
+}
+section.customTable tr.customTable_lastSelected td {
+  background: #ddeeee;
+  top: 29px;
+  z-index: 10;
+  bottom: 0px;
+  position: sticky;
+}
+section.customTable
+  tr.customTable_rowSelected.customTable_lastInSelectedGroup
+  td {
+  border-bottom: 1px solid #cc99ff;
+}
+section.customTable
+  tr.customTable_rowSelected.customTable_lastInSelectedGroup
+  td:first-child {
+  border-bottom-left-radius: 4px;
+}
+section.customTable
+  tr.customTable_rowSelected.customTable_lastInSelectedGroup
+  td:last-child {
+  border-bottom-right-radius: 4px;
+}
+section.customTable
+  tr:not(.customTable_rowSelected)
+  + tr.customTable_rowSelected
+  td:not(:first-child) {
+  border-top: 1px solid #cc99ff;
+}
+section.customTable
+  tr:not(.customTable_rowSelected)
+  + tr.customTable_rowSelected
+  td:first-child {
+  border-top-left-radius: 4px;
+}
+section.customTable
+  tr:not(.customTable_rowSelected)
+  + tr.customTable_rowSelected
+  td:last-child {
+  border-top-right-radius: 4px;
+}
+section.customTable tr.customTable_rowSelected td:first-child {
+  background: #cc99ff;
+  border-left: 1px solid #cc99ff;
+}
+section.customTable tr.customTable_rowSelected td:last-child {
+  border-right: 1px solid #cc99ff;
+  padding-right: 1px;
+}
+section.customTable td input[type="checkbox"] {
+  margin-left: 5px;
+}
+section.customTable .customTable_selectRow {
+  width: 30px !important;
+}
+section.customTable td.customTable_selectRow,
+section.customTable .customTable_selectRow > div {
+  font-size: 0.9rem;
+  max-width: 30px;
+  position: relative;
+}
+section.customTable td.customTable_selectRow > div {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+section.customTable td.customTable_selectRow .customTable_checkbox {
+  margin-left: 7px;
+}
+section.customTable th.customTable_selectRow div {
+  padding-top: 7px;
+  padding-left: 5px;
+  padding-right: 25px;
+}
+section.customTable th.customTable_selectRow .customTable_checkbox {
+  margin: 0;
+  margin-left: 3px;
+}
+section.customTable th.customTable_selectRow .customTable_checkmark {
+  border-color: lightgray;
+}
+section.customTable
+  th.customTable_selectRow
+  .customTable_checkbox
+  .customTable_checkmark:after {
+  border-color: gray;
+}
+section.customTable th.status {
+  width: 80px;
+}
+section.customTable .customTable_filterIcon {
+  font-family: monospace;
+  margin-left: 5px;
+}
+section.customTable .customTable_filterIcon.customTable_sortedOrFiltered svg,
+section.customTable .customTable_popupOpened svg {
+  stroke: #aa66ff;
+  stroke-width: 0.7;
+}
+section.customTable .customTable_actionIcon.customTable_actionsCustomized path,
+section.customTable .customTable_actionIcon.customTable_popupOpened path {
+  stroke: #aa66ff;
+  stroke-width: 1.6;
+}
+section.customTable .customTable_selectItem,
+section.customTable .customTable_filterIcon,
+section.customTable .customTable_actionIcon {
+  cursor: pointer;
+}
+section.customTable th.customTable_actionsRow div {
+  width: 100%;
+}
+section.customTable th.customTable_actionsRow div .customTable_actionIcon {
+  text-align: right;
+  margin-top: 1px;
+}
+section.customTable th.customTable_actionsRow div .customTable_actionIcon svg {
+  width: 18px;
+  height: 18px;
+}
+section.customTable .customTable_noSelectable {
+  pointer-events: none;
+}
+section.customTable .customTable_popupView {
+  position: absolute;
+  top: 30px;
+  left: calc(100% - 40px);
+  min-width: 160px;
+  margin-top: 0px;
+  z-index: 1000;
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  background-color: white;
+  padding: 15px 10px;
+}
+section.customTable .customTable_popupView.customTable_right {
+  left: unset;
+  right: -10px;
+}
+section.customTable .customTable_popupView:before,
+section.customTable .customTable_popupView:after {
+  content: "";
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  top: -8px;
+  left: 14px;
+}
+section.customTable .customTable_popupView.customTable_right:before,
+section.customTable .customTable_popupView.customTable_right:after {
+  left: unset;
+  right: 14px;
+}
+section.customTable .customTable_popupView.customTable_left:before,
+section.customTable .customTable_popupView.customTable_left:after {
+  right: unset;
+  left: 14px;
+}
+section.customTable .customTable_popupView:before {
+  border-bottom: 10px solid lightgrey;
+  margin-top: -2px;
+}
+section.customTable .customTable_popupView:after {
+  border-bottom: 10px solid white;
+  z-index: 1;
+}
+section.customTable .customTable_popupView .customTable_hiddenInput {
+  width: 0;
+  height: 0;
+  border: 0;
+  position: absolute;
+  z-index: -1;
+}
+section.customTable .customTable_popupView .customTable_noFilter,
+section.customTable .customTable_popupView .customTable_valueForFilter {
+  padding-left: 10px;
+  position: relative;
+}
+section.customTable .customTable_popupView .customTable_noFilter {
+  font-style: italic;
+}
+section.customTable .customTable_popupView .customTable_valueForFilter {
+  padding-left: 10px;
+  max-height: 150px;
+  overflow-y: scroll;
+}
+section.customTable
+  .customTable_popupView
+  .customTable_valueForFilter.customTable_noScroll {
+  overflow: hidden;
+}
+section.customTable .customTable_popupView .customTable_valueForFilter div {
+  white-space: nowrap;
+  padding-right: 10px;
+}
+section.customTable .customTable_popupView .customTable_valueForFilter input {
+  margin-top: -1px;
+}
+section.customTable .customTable_popupView .customTable_noFilter::before,
+section.customTable .customTable_popupView .customTable_valueForFilter::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  top: 0;
+  width: 5px;
+  background-color: #eeeeee;
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+}
+section.customTable .customTable_popupView .customTable_popupTitle {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+section.customTable .customTable_popupView .customTable_filterPopupSort {
+  padding-top: 15px;
+  color: #aa66ff;
+  text-decoration: underline;
+}
+section.customTable
+  .customTable_popupView
+  .customTable_filterPopupSort
+  .customTable_icon {
+  margin-right: 5px;
+}
+section.customTable
+  .customTable_popupView
+  .customTable_filterPopupSort
+  .customTable_selected {
+  font-weight: bold;
+}
+section.customTable
+  .customTable_popupView
+  .customTable_filterPopupSort
+  .customTable_selected
+  path {
+  stroke-width: 1.3;
+}
+section.customTable .customTable_popupView .customTable_filterPopupSort path {
+  stroke: #aa66ff;
+}
+section.customTable .customTable_popupView .customTable_filterPopupSort:hover {
+  cursor: pointer;
+}
+section.customTable .customTable_popupView .customTable_popupSubTitle {
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+section.customTable .customTable_actionsRow div {
+  justify-content: flex-end;
+}
+section.customTable
+  .customTable_actionsRow
+  .customTable_popupView.customTable_right {
+  right: 0px;
+}
+section.customTable
+  .customTable_actionsRow
+  .customTable_popupView.customTable_right:before,
+section.customTable
+  .customTable_actionsRow
+  .customTable_popupView.customTable_right:after {
+  left: unset;
+  right: 8px;
+}
+section.customTable .customTable_checkbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+section.customTable .customTable_checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+section.customTable .customTable_checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  background-color: white;
+  border-radius: 2px;
+  border: 1px solid #aa66ff;
+}
+section.customTable .customTable_checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+section.customTable
+  .customTable_checkbox
+  input:checked
+  ~ .customTable_checkmark:after {
+  display: block;
+}
+section.customTable .customTable_checkbox .customTable_checkmark:after {
+  left: 4px;
+  top: 0px;
+  width: 5px;
+  height: 10px;
+  border: solid #aa66ff;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+section.customTable .customTable_buttonsList {
+  display: flex;
+  justify-content: space-between;
+}
+section.customTable #customTable_actionsRowId {
+  min-width: 180px;
+  max-width: 180px;
+}
+section.customTable #customTable_actionsRowId label {
+  font-size: 12px;
+  line-height: 16px;
+  padding-left: 25px;
+  text-transform: uppercase;
+  margin-left: 10px;
+}
+section.customTable #customTable_actionsRowId button {
+  cursor: pointer;
+  margin: 10px 2px;
+  margin-bottom: 15px;
+  background-color: #fbf2ff;
+  border: none;
+  color: #aa66ff;
+  padding: 5px 0;
+  text-align: center;
+  width: 80px;
+}
+section.customTable #customTable_actionsRowId .customTable_popupTitle {
+  text-transform: none;
+  font-size: 16px;
+}

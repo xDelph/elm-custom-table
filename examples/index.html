@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" data-custom-table-scroll="1920">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="stylesheet" href="./style.css" />
+
+    <title>CustomTable</title>
+
+    <script src="./main.js"></script>
+  </head>
+  <body>
+    <noscript> You need to enable JavaScript to run this app. </noscript>
+
+    <div id="root" style="height: 100vh"></div>
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded", () => {
+        const app = Elm.Main.init({
+          node: document.getElementById("root"),
+          flags: {}
+        });
+
+        const debounce = fn => {
+          let frame;
+
+          return (...params) => {
+            if (frame) {
+              window.cancelAnimationFrame(frame);
+            }
+
+            frame = window.requestAnimationFrame(() => {
+              fn(...params);
+            });
+          };
+        };
+
+        let lastScrollTop = 0;
+
+        function updateCustomTableScroll(e) {
+          document.documentElement.dataset.customTableScroll = Math.max(
+            Math.floor(e.scrollWidth - e.clientWidth - e.scrollLeft),
+            80
+          );
+          if (lastScrollTop !== e.scrollTop) {
+            lastScrollTop = e.scrollTop;
+            app.ports.scrolledTo.send({
+              height: e.clientHeight,
+              scrollTop: parseInt(e.scrollTop, 10)
+            });
+          }
+        }
+
+        document.addEventListener(
+          "scroll",
+          debounce(e => {
+            if (e.target.id === "customTable")
+              updateCustomTableScroll(e.target);
+          }),
+          true
+        );
+
+        window.onresize = () => {
+          const customTable = document.querySelector("#customTable");
+          if (customTable) {
+            updateCustomTableScroll(customTable);
+          }
+        };
+
+        app.ports.updateCustomTable.subscribe(scrollIntoView => {
+          setTimeout(() => {
+            const customTable = document.querySelector("#customTable");
+            if (customTable) updateCustomTableScroll(customTable);
+            else return;
+
+            const trs = document.querySelectorAll(".customTable_rowSelected");
+            trs.forEach(tr => {
+              tr.className = tr.className.replace(
+                / customTable_lastInSelectedGroup/g,
+                ""
+              );
+              if (
+                tr.nextElementSibling &&
+                tr.nextElementSibling.className.indexOf(
+                  "customTable_rowSelected"
+                ) === -1
+              ) {
+                tr.className =
+                  tr.className + " customTable_lastInSelectedGroup";
+              }
+            });
+          }, 150);
+        });
+      });
+    </script>
+  </body>
+</html>

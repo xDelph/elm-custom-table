@@ -1,0 +1,11 @@
+{
+  "name": "elm-custom-table",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/xDelph/elm-custom-table",
+  "author": "Thomas Delalonde <thomas.delalonde@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "elm": "^0.19.0-no-deps"
+  }
+}
