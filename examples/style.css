@@ -1,9 +1,17 @@
+*:focus {
+  outline: none;
+}
 section.customTable {
   position: relative;
   color: black;
   background-color: white;
   height: calc(100% - 20px);
   overflow: hidden;
+}
+section.customTable * {
+  box-sizing: border-box;
+  line-height: 20px;
+  text-align: left;
 }
 section.customTable > div {
   overflow-y: scroll;
@@ -59,6 +67,7 @@ section.customTable .customTable_pagination div:last-child {
 }
 section.customTable table {
   border-spacing: 0;
+  font-size: 13px;
   border-collapse: unset;
 }
 section.customTable td {
@@ -83,7 +92,7 @@ section.customTable th > div {
   height: 30px;
   top: 0;
   font-weight: 100;
-  font-size: 0.9rem;
+  font-size: 0.9em;
   line-height: 20px;
   border-left: 1px solid #eeeeee;
   border-bottom: 1px solid lightgrey;
@@ -153,7 +162,7 @@ section.customTable .customTable_selectRow {
 }
 section.customTable td.customTable_selectRow,
 section.customTable .customTable_selectRow > div {
-  font-size: 0.9rem;
+  font-size: 0.9em;
   max-width: 30px;
   position: relative;
 }
@@ -193,6 +202,7 @@ section.customTable th.status {
 section.customTable .customTable_filterIcon {
   font-family: monospace;
   margin-left: 5px;
+  align-self: center;
 }
 section.customTable .customTable_filterIcon.customTable_sortedOrFiltered svg,
 section.customTable .customTable_popupOpened svg {
@@ -415,6 +425,7 @@ section.customTable .customTable_checkbox .customTable_checkmark:after {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+  box-sizing: border-box;
 }
 section.customTable .customTable_buttonsList {
   display: flex;
@@ -445,4 +456,73 @@ section.customTable #customTable_actionsRowId button {
 section.customTable #customTable_actionsRowId .customTable_popupTitle {
   text-transform: none;
   font-size: 16px;
+}
+
+section.customTable th:not(.customTable_selectRow) {
+  min-width: 80px;
+}
+/* section.customTable th.status {
+  min-width: 85px !important;
+}
+section.customTable th.ev {
+  min-width: 50px !important;
+}
+section.customTable th.gender,
+section.customTable th.reference {
+  min-width: 110px !important;
+}
+section.customTable th.articleId {
+  min-width: 140px !important;
+}
+section.customTable th.description {
+  min-width: 200px !important;
+}
+section.customTable th.actions {
+  min-width: 100px !important;
+  max-width: 100px;
+} */
+section.customTable td:not(.customTable_selectRow) {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+section.customTable .customTable_actionsRow {
+  width: 80px !important;
+}
+section.customTable td.customTable_actionsRow > div {
+  display: flex;
+  justify-content: space-around;
+}
+section.customTable td.customTable_actionsRow > div a.fas {
+  color: #aa66ff;
+  margin-left: 5px;
+  font-size: 1.5rem;
+}
+section.customTable td.customTable_actionsRow > div a.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+section.customTable tr:hover td.customTable_actionsRow {
+  display: table-cell;
+}
+
+html:not([data-custom-table-scroll="80"]) .customTable_actionsRow {
+  position: sticky;
+  right: 0px;
+}
+html:not([data-custom-table-scroll="80"]) td.customTable_actionsRow {
+  display: none;
+}
+html:not([data-custom-table-scroll="80"]) .row .customTable_actionsRow::before,
+html:not([data-custom-table-scroll="80"]) .customTable_actionsRow:before {
+  content: " ";
+  position: absolute;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.16) 100%
+  );
+  width: 8px;
+  top: 0;
+  bottom: 0;
+  left: -8px;
 }
